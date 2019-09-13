@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,5 +8,6 @@ class Message extends Model
 {
     protected $table = 'message';
     public $timestamps = false;
-    //const CREATED_AT = 'date_sent';
+
+    const CREATED_AT = 'date_sent';
 }
