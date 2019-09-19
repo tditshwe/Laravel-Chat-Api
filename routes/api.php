@@ -17,7 +17,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+/*Gets */
+
+Route::middleware('auth:api')->get('/chat', 'ChatController@chatList');
+
+/* Posts */
 
 Route::post('/user/register', 'UserController@signUp');
-
 Route::post('/user/signin', 'UserController@signIn');
+

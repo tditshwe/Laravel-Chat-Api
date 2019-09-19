@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\Chat;
 
 class ChatController extends Controller
 {
-    public function chatList() {
-        return 'Your chat list';
+    public function chatList(Request $request) {
+        $chatList = Chat::where('sender', $request->username)
+                        ->orWhere('receiver', $request->username)
+                        ->get();
+
+        return $chatList;
     }
 
     public function chat($id) {
