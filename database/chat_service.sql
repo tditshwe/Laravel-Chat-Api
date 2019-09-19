@@ -1,13 +1,13 @@
 CREATE TABLE IF NOT EXISTS user(
     username VARCHAR(20) PRIMARY KEY NOT NULL,
     display_name VARCHAR(30) NOT NULL,
-    password VARCHAR(50) NOT NULL,
+    password VARCHAR(60) NOT NULL,
     api_token VARCHAR(80),
     status VARCHAR(80) NOT NULL,
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL,
-    profile_image VARCHAR(30),
-    remember_token TINYINT NOT NULL);
+    profile_image VARCHAR(30));
+    --remember_token TINYINT NOT NULL);
 
 CREATE TABLE IF NOT EXISTS chat(
     id int PRIMARY KEY AUTO_INCREMENT NOT NULL,

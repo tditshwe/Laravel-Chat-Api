@@ -17,4 +17,14 @@ class Chat extends Model
     protected $attributes = [
         'is_group' => false,
     ];
+
+    public function chatSender()
+    {
+        return $this->belongsTo('App\Models\User', 'sender');
+    }
+
+    public function chatReceiver()
+    {
+        return $this->belongsTo('App\Models\User', 'receiver');
+    }
 }

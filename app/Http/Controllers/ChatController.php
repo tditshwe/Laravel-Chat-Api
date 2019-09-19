@@ -9,10 +9,10 @@ use App\Models\Chat;
 class ChatController extends Controller
 {
     public function chatList(Request $request) {
-        $chatList = Chat::where('sender', $request->username)
+        $chatList = Chat::with(['chatSender', 'chatReceiver'])->where('sender', $request->username)
                         ->orWhere('receiver', $request->username)
                         ->get();
-
+                        
         return $chatList;
     }
 
