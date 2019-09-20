@@ -31,9 +31,9 @@ class UserController extends Controller
 
         if (Auth::attempt($credentials))
         {
-            return Auth::user();
+            return Auth::user()->makeVisible('api_token');
         }
         else
-            return array('hasError' => true, 'message' => 'Invalid login details');
+            return response(Array('message' => 'Invalid login details'), 400);
     }
 }
