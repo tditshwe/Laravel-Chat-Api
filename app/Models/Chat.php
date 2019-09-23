@@ -9,6 +9,8 @@ class Chat extends Model
     protected $table = 'chat';
     public $timestamps = false;
 
+    protected $fillable = ['last_message', 'sender', 'receiver'];
+
     protected $casts = [
         'is_group' => 'boolean',
         'last_message' => 'int'

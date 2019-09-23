@@ -9,5 +9,7 @@ class Message extends Model
     protected $table = 'message';
     public $timestamps = false;
 
-    const CREATED_AT = 'date_sent';
+    protected $fillable = ['text', 'sender', 'date_sent'];
+
+    protected $casts = ['date_sent' => 'datetime'];
 }
