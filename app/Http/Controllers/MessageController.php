@@ -6,17 +6,22 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Message;
 use App\Models\Chat;
+use App\Models\User;
 
 class MessageController extends Controller
 {
-    public function messages(Request $request, $repicient)
+    public function messages(Request $request, $recipient)
     {
-        $user = $request->user()->username;
-        $messages = Message::where();
+        $username = $request->user()->username;
+        $userMessages = User::find($username)->receivedMessages;
+        $recipientMessages = User::find($recipient)->receivedMessages();
 
-        //return view('user.index', ['users' => $users]);
-        return ['users' => $messages,
-        'name' => $messages->text];
+        $messages = User::find($username)->receivedMessages()
+            ->union($recipientMessages)
+            ->oldest('date_sent')
+            ->get();
+
+        return $messages;
     }
 
     public function sendToUser(Request $request, $recepient)
@@ -30,6 +35,9 @@ class MessageController extends Controller
             'sender' => $request->user()->username,
             'date_sent' => now()
         ]);
+
+        $user = User::find($recepient);
+        $user->receivedMessages()->attach($message->id);
 
         if ($chats->count() == 0)
         {

@@ -31,3 +31,10 @@ CREATE TABLE IF NOT EXISTS message(
     sender VARCHAR(20) NOT NULL,
     FOREIGN KEY (sender) REFERENCES user(username));
 
+
+CREATE TABLE IF NOT EXISTS message_user(
+    message_id int NOT NULL,
+    user_username VARCHAR(20) NOT NULL,
+    FOREIGN KEY (message_id) REFERENCES message(id));
+    FOREIGN KEY (user_username) REFERENCES user(username));
+);

@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 /*Gets */
 
 Route::middleware('auth:api')->get('/chat', 'ChatController@chatList');
-Route::middleware('auth:api')->get('/message', 'MessageController@messages');
+Route::middleware('auth:api')->get('/message/{recepient}', 'MessageController@messages');
 
 /* Posts */
 

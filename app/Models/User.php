@@ -31,4 +31,9 @@ class User extends Authenticatable
     protected $attributes = [
         'status' => 'Ready to chat',
     ];
+
+    public function receivedMessages()
+    {
+        return $this->belongsToMany('App\Models\Message');
+    }
 }
