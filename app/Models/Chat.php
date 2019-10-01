@@ -29,4 +29,9 @@ class Chat extends Model
     {
         return $this->belongsTo('App\Models\User', 'receiver');
     }
+
+    public function lastChatMessage()
+    {
+        return $this->belongsTo('App\Models\Message', 'last_message');
+    }
 }

@@ -12,7 +12,7 @@ class ChatController extends Controller
     public function chatList(Request $request) {
         $username = $request->user()->username;
 
-        $chatList = Chat::with(['chatSender', 'chatReceiver'])->where('sender', $username)
+        $chatList = Chat::with(['chatSender', 'chatReceiver', 'lastChatMessage'])->where('sender', $username)
                         ->orWhere('receiver', $username)
                         ->get();
         //Log::info('Showing user profile for user:' . $request->user());

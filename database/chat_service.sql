@@ -7,7 +7,6 @@ CREATE TABLE IF NOT EXISTS user(
     created_at DATETIME NOT NULL,
     updated_at DATETIME NOT NULL,
     profile_image VARCHAR(30));
-    --remember_token TINYINT NOT NULL);
 
 CREATE TABLE IF NOT EXISTS chat(
     id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
@@ -35,6 +34,6 @@ CREATE TABLE IF NOT EXISTS message(
 CREATE TABLE IF NOT EXISTS message_user(
     message_id int NOT NULL,
     user_username VARCHAR(20) NOT NULL,
-    FOREIGN KEY (message_id) REFERENCES message(id));
-    FOREIGN KEY (user_username) REFERENCES user(username));
+    FOREIGN KEY (message_id) REFERENCES message(id),
+    FOREIGN KEY (user_username) REFERENCES user(username)
 );

@@ -36,4 +36,9 @@ class UserController extends Controller
         else
             return response(Array('message' => 'Invalid login details'), 400);
     }
+
+    public function contactList(Request $request)
+    {
+        return User::all()->except($request->user()->username);
+    }
 }

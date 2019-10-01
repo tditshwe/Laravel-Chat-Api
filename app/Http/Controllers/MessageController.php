@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\DB;
 use App\Models\Message;
 use App\Models\Chat;
 use App\Models\User;
@@ -13,7 +13,7 @@ class MessageController extends Controller
     public function messages(Request $request, $recipient)
     {
         $username = $request->user()->username;
-        $userMessages = User::find($username)->receivedMessages;
+        //$userMessages = User::find($username)->receivedMessages;
         $recipientMessages = User::find($recipient)->receivedMessages();
 
         $messages = User::find($username)->receivedMessages()
