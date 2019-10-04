@@ -12,6 +12,9 @@ class UserController extends Controller
 {
     public function signUp(Request $request)
     {
+        if (User::find($request->username))
+            return response(Array('message' => 'This username is already taken'), 400);
+
         return User::create([
             'username' => $request->username,
             'display_name' => $request->display_name,
