@@ -36,4 +36,14 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Message');
     }
+
+    public function groupsCreated()
+    {
+        return $this->hasMany('App\Models\Group', 'creator');
+    }
+
+    public function groupsJoined()
+    {
+        return $this->belongsToMany('App\Models\Group');
+    }
 }

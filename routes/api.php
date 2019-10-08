@@ -28,4 +28,5 @@ Route::middleware('auth:api')->get('/user/contacts', 'UserController@contactList
 Route::post('/user/register', 'UserController@signUp');
 Route::post('/user/signin', 'UserController@signIn');
 Route::middleware('auth:api')->post('/message/{recepient}', 'MessageController@sendToUser');
+Route::middleware('auth:api')->post('/group/{name}', 'GroupController@create');
 
