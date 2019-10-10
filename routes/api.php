@@ -22,11 +22,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::middleware('auth:api')->get('/chat', 'ChatController@chatList');
 Route::middleware('auth:api')->get('/message/{recepient}', 'MessageController@messages');
 Route::middleware('auth:api')->get('/user/contacts', 'UserController@contactList');
+Route::middleware('auth:api')->get('/group', 'GroupController@get');
 
 /* Posts */
 
 Route::post('/user/register', 'UserController@signUp');
 Route::post('/user/signin', 'UserController@signIn');
 Route::middleware('auth:api')->post('/message/{recepient}', 'MessageController@sendToUser');
-Route::middleware('auth:api')->post('/group/{name}', 'GroupController@create');
+Route::middleware('auth:api')->post('/group/create/{name}', 'GroupController@create');
+Route::middleware('auth:api')->post('/group', 'GroupController@addParticipant');
 

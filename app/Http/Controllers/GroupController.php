@@ -8,6 +8,13 @@ use App\Models\User;
 
 class GroupController extends Controller
 {
+    public function get(Request $request)
+    {
+        $user = User::find($request->user()->username);
+
+        return $user->groupsJoined;
+    }
+
     public function create(Request $request, $name)
     {
         $user = User::find($request->user()->username);

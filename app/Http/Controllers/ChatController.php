@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Chat;
+use App\Models\Group;
 //use Illuminate\Support\Facades\Log;
 
 class ChatController extends Controller
@@ -16,6 +17,7 @@ class ChatController extends Controller
                         ->orWhere('receiver', $username)
                         ->get();
         //Log::info('Showing user profile for user:' . $request->user());
+        //$groups = User::find($username)->groupsJoined();
         return $chatList;
     }
 
