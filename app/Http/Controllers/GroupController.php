@@ -22,6 +22,11 @@ class GroupController extends Controller
 
     public function addParticipant(Request $request)
     {
+        $group = Group::find($request->group_id);
+
+        if ($group->creator != $request->user()->username)
+            return response('You need to be the group creator', 400);
+
         $user = User::find($request->participant);
 
         $user->groupsJoined()->attach($request->group_id);
