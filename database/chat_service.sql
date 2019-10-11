@@ -44,3 +44,10 @@ CREATE TABLE IF NOT EXISTS group_user(
     FOREIGN KEY (group_id) REFERENCES `group`(id),
     FOREIGN KEY (user_username) REFERENCES user(username)
 );
+
+CREATE TABLE IF NOT EXISTS group_message(
+    group_id int NOT NULL,
+    message_id int NOT NULL,
+    FOREIGN KEY (group_id) REFERENCES `group`(id),
+    FOREIGN KEY (message_id) REFERENCES message(id)
+);

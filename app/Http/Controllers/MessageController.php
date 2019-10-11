@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Message;
 use App\Models\Chat;
 use App\Models\User;
+use App\Models\Group;
 
 class MessageController extends Controller
 {
@@ -22,6 +23,12 @@ class MessageController extends Controller
             ->get();
 
         return $messages;
+    }
+
+    public function groupMessages($groupId)
+    {
+        $group = Group::find($groupId);
+        return $group->messages;
     }
 
     public function sendToUser(Request $request, $recepient)
@@ -54,5 +61,10 @@ class MessageController extends Controller
             $chat->last_message = $message->id;
             $chat->save();
         }
+    }
+
+    public function sendToGroup()
+    {
+
     }
 }

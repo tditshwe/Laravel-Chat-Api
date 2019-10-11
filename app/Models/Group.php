@@ -10,4 +10,8 @@ class Group extends Model
     public $timestamps = false;
 
     protected $fillable = ['name', 'creator'];
+
+    public function messages() {
+        return $this->belongsToMany('App\Models\Message');
+    }
 }
