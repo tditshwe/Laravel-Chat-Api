@@ -14,4 +14,8 @@ class Group extends Model
     public function messages() {
         return $this->belongsToMany('App\Models\Message');
     }
+
+    public function participants() {
+        return $this->belongsToMany('App\Models\User');
+    }
 }

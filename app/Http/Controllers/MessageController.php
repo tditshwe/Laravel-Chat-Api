@@ -15,9 +15,13 @@ class MessageController extends Controller
     {
         $username = $request->user()->username;
         //$userMessages = User::find($username)->receivedMessages;
-        $recipientMessages = User::find($recipient)->receivedMessages();
+        $recipientMessages = User::find($recipient)->receivedMessages()
+            ->where('sender', $username);
+
+        //echo $recipientMessages->get();
 
         $messages = User::find($username)->receivedMessages()
+            ->where('sender', $recipient)
             ->union($recipientMessages)
             ->oldest('date_sent')
             ->get();
@@ -63,8 +67,19 @@ class MessageController extends Controller
         }
     }
 
-    public function sendToGroup()
+    public function sendToGroup(Request $request, $groupId)
     {
+        $group = Group::find($groupId);
 
+        if (!$group->participants->contains($request->user()->username))
+            return response('You are not the member of this group', 400);
+
+        $message = Message::create([
+            'text' => $request->text,
+            'sender' => $request->user()->username,
+            'date_sent' => now()
+        ]);
+
+        $group->messages()->attach($message->id);
     }
 }

@@ -12,4 +12,9 @@ class Message extends Model
     protected $fillable = ['text', 'sender', 'date_sent'];
 
     protected $casts = ['date_sent' => 'datetime'];
+    protected $with = ['msgSender'];
+
+    public function msgSender() {
+        return $this->belongsTo('App\Models\User', 'sender');
+    }
 }
