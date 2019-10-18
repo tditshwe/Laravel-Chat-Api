@@ -25,6 +25,11 @@ class GroupController extends Controller
         ]);
 
         $user->groupsJoined()->attach($group->id);
+
+        foreach ($request->participants as $par)
+        {
+            $par->groupsJoined()->attach($group->id);
+        }
     }
 
     public function addParticipant(Request $request)
