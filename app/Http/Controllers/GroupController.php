@@ -15,6 +15,16 @@ class GroupController extends Controller
         return $user->groupsJoined;
     }
 
+    public function participants(Request $request, $groupId)
+    {
+        $group = Group::find($groupId);
+
+        if (!$group->participants->contains($request->user()->username))
+            return response('You are not the member of this group', 400);
+
+        return $group->participants;
+    }
+
     public function create(Request $request, $name)
     {
         $user = User::find($request->user()->username);
@@ -36,6 +46,7 @@ class GroupController extends Controller
 
         $user = User::find($request->participant);
 
-        $user->groupsJoined()->attach($request->group_id);
+        if (!$user->groupsJoined->contains($request->group_id))
+            $user->groupsJoined()->attach($request->group_id);
     }
 }
