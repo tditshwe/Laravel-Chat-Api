@@ -23,6 +23,7 @@ Route::middleware('auth:api')->get('/chat', 'ChatController@chatList');
 Route::middleware('auth:api')->get('/message/{recepient}', 'MessageController@messages');
 Route::middleware('auth:api')->get('/user/contacts', 'UserController@contactList');
 Route::middleware('auth:api')->get('/group', 'GroupController@get');
+Route::middleware('auth:api')->get('/group/{groupId}', 'GroupController@participants');
 Route::middleware('auth:api')->get('/message/groups/{groupId}', 'MessageController@groupMessages');
 
 /* Posts */
