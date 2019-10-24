@@ -1,8 +1,8 @@
 Users
 ------------------------------------
 username	display_name	password    token
-anaden0	    Archibaldo	    SHs7q3Hu    aom75ncoupy5hUnx0WSctBarwPsF4RQvt6Ulfa0Pa8HxUXQ4o5CGjJSHN84u
-lbehagg1	Lorianne	    X4DUi7lod
+archi	    Archibaldo	    SHs7q3Hu    aom75ncoupy5hUnx0WSctBarwPsF4RQvt6Ulfa0Pa8HxUXQ4o5CGjJSHN84u
+lori	    Lorianne	    X4DUi7lod
 phamela 	Sexy Phamela	erotica
 samsara	    Monghadi	    userpass
 Scooby      Scooby Do	    userpass
