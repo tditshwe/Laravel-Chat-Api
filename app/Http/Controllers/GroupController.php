@@ -54,4 +54,15 @@ class GroupController extends Controller
         if (!$user->groupsJoined->contains($request->group_id))
             $user->groupsJoined()->attach($request->group_id);
     }
+
+    public function edit(Request $request, $id)
+    {
+        $group = Group::find($id);
+
+        if ($group->creator != $request->user()->username)
+            return response('You are not this group creator', 400);
+
+        $group->name = $request->groupName;
+        $group->save();
+    }
 }

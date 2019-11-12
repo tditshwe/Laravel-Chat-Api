@@ -35,3 +35,6 @@ Route::middleware('auth:api')->post('/message/group/{groupId}', 'MessageControll
 Route::middleware('auth:api')->post('/group/create/{name}', 'GroupController@create');
 Route::middleware('auth:api')->post('/group', 'GroupController@addParticipant');
 
+/* Puts */
+
+Route::middleware('auth:api')->put('/group/{id}', 'GroupController@edit');
