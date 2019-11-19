@@ -25,11 +25,6 @@ class UserController extends Controller
 
     public function signIn(Request $request)
     {
-        /*$userdata = array(
-            'username' => 'samsara' ,
-            'password' => 'userpass'
-        );*/
-
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials))
@@ -43,5 +38,13 @@ class UserController extends Controller
     public function contactList(Request $request)
     {
         return User::all()->except($request->user()->username);
+    }
+
+    public function edit(Request $request)
+    {
+        $user = User::find($request->user()->username);
+        $user->fill(['display_name' => $request->displayName,
+                     'status' => $request->status]);
+        $user->save();
     }
 }

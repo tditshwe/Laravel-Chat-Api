@@ -60,7 +60,7 @@ class GroupController extends Controller
         $group = Group::find($id);
 
         if ($group->creator != $request->user()->username)
-            return response('You are not this group creator', 400);
+            return response('You are not the creator of this group', 400);
 
         $group->name = $request->groupName;
         $group->save();
