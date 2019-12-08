@@ -38,7 +38,8 @@ class GroupController extends Controller
 
         foreach ($request->participants as $par)
         {
-            $par->groupsJoined()->attach($group->id);
+            $member = User::find($par['username']);
+            $member->groupsJoined()->attach($group->id);
         }
     }
 
