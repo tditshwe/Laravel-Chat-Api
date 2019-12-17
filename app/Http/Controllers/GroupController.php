@@ -66,4 +66,16 @@ class GroupController extends Controller
         $group->name = $request->groupName;
         $group->save();
     }
+
+    public function removeParticipant(Request $request)
+    {
+        $group = Group::find($request->group_id);
+
+        if ($group->creator != $request->user()->username)
+            return response('You need to be the group creator', 400);
+        if ($request->participant ==  $group->creator)
+            return response(["error_message" => 'You cannot remove yourself from the group'], 400);
+
+        $group->participants()->detach($request->participant);
+    }
 }

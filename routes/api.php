@@ -34,6 +34,7 @@ Route::middleware('auth:api')->post('/message/{recepient}', 'MessageController@s
 Route::middleware('auth:api')->post('/message/group/{groupId}', 'MessageController@sendToGroup');
 Route::middleware('auth:api')->post('/group/create/{name}', 'GroupController@create');
 Route::middleware('auth:api')->post('/group', 'GroupController@addParticipant');
+Route::middleware('auth:api')->post('/group/removeparticipant', 'GroupController@removeParticipant');
 
 /* Puts */
 
